@@ -1,0 +1,12 @@
+<div class="content-block">
+    <h2>Profile</h2>
+
+    <state-city
+    (outputEstado)="onEstado($event)"
+    (outputCidade)="onCidade($event)"
+    ></state-city>
+    <br>
+
+    <p>Estado selecionado: {{ estadoSelecionado }}</p>
+    <p>Cidade selecionada: {{ cidadeSelecionada }}</p>
+</div>

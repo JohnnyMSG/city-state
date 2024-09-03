@@ -1,8 +1,11 @@
+import themes from 'devextreme/ui/themes';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 
-platformBrowserDynamic().bootstrapModule(AppModule, {
+themes.initialized(() => {
+  platformBrowserDynamic().bootstrapModule(AppModule, {
   ngZoneEventCoalescing: true
 })
-  .catch(err => console.error(err));
+    .catch(err => console.error(err));
+});
