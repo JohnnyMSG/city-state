@@ -16,6 +16,8 @@ export class StateCityComponent {
   cidades: Cidade[] = [];
   estadoSelecionado!: Estado;
   cidadeSelecionada!: Cidade;
+  idEstadoInicial!: number; 
+  idCidadeInicial!: number; 
 
 
   @Output() outputCidade: EventEmitter<string> = new EventEmitter<string>();
@@ -30,6 +32,18 @@ export class StateCityComponent {
     this.estadoService.getEstados().subscribe(data => {
       this.estados = data;
     });
+
+    this.idEstadoInicial = 31; //ID MINAS GERAIS
+    this.onChangeState(this.idEstadoInicial);
+    this.idCidadeInicial = 3170206; //ID UBERLÂNDIA
+    this.selectedCity(this.idCidadeInicial);
+  }
+  
+  getDisplayText(item: any): string {
+    if (item) {
+      return `${item.sigla} - ${item.nome}`;
+    }
+    return '';
   }
 
   onChangeState(idEstado: number) {
@@ -46,6 +60,7 @@ export class StateCityComponent {
       this.estadoOutput();
       console.log(this.estadoSelecionado.nome);
     });
+
   }
 
   selectedCity(idCidade: number) {

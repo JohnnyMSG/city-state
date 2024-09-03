@@ -1,12 +1,13 @@
 <div style="margin-left: 5%;">
     <p>Estados</p>
     <dx-select-box
-    width="50%"
-    [dataSource]="estados"
-    displayExpr="sigla"
-    valueExpr="id"
-    (onValueChanged)="onChangeState($event.value)"
-    placeholder="Selecione um estado"
+        width="50%"
+        [dataSource]="estados"
+        [value]="idEstadoInicial"
+        [displayExpr]="getDisplayText"
+        valueExpr="id"
+        (onValueChanged)="onChangeState($event.value)"
+        placeholder="Selecione um estado"
     ></dx-select-box>
     <br>
 
@@ -14,6 +15,7 @@
     <dx-select-box
     width="50%"
     [dataSource]="cidades"
+    [value]="idCidadeInicial"
     valueExpr="id"
     displayExpr="nome"
     placeholder="Selecione uma cidade"
