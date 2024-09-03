@@ -20,4 +20,8 @@ export class EstadoService {
   searchById(id: number): Observable<Estado> {
     return this.http.get<Estado>(`${this.API}/${id}`);
   }
+
+  searchBySigla(sigla: string): Observable<Estado> {
+    return this.http.get<Estado>(`${this.API}/${sigla}`);
+  }
 }

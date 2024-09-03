@@ -4,9 +4,9 @@
         width="50%"
         [dataSource]="estados"
         [value]="idEstadoInicial"
-        [displayExpr]="getDisplayText"
+        [displayExpr]="textFormatted"
         valueExpr="id"
-        (onValueChanged)="onChangeState($event.value)"
+        (onValueChanged)="loadCities($event.value)"
         placeholder="Selecione um estado"
     ></dx-select-box>
     <br>
@@ -20,6 +20,6 @@
     displayExpr="nome"
     placeholder="Selecione uma cidade"
     [searchEnabled]="true"
-    (onValueChanged)="selectedCity($event.value)"
+    (onValueChanged)="selectCity($event.value)"
     ></dx-select-box>
 </div>

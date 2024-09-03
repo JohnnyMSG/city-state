@@ -1,6 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { StateCityModule } from '../../shared/components';
 import { CommonModule } from '@angular/common';
+import { Estado } from '../../shared/models/estado';
+import { Cidade } from '../../shared/models/cidade';
 
 @Component({
   selector: 'localizacao',
@@ -9,16 +11,8 @@ import { CommonModule } from '@angular/common';
 })
 export class LocalizacaoComponent {
 
-  estadoSelecionado!: string;
-  cidadeSelecionada!: string;
-
-  onEstado(value: string) {
-    this.estadoSelecionado = value;
-  }
-
-  onCidade(value: string) {
-    this.cidadeSelecionada = value;
-  }
+  estadoSelecionado: Estado = {} as Estado; 
+  cidadeSelecionada: Cidade = {} as Cidade;
 
 }
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, NgModule, Output } from '@angular/core';
+import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { DxSelectBoxModule } from 'devextreme-angular';
 import { EstadoService } from '../../services/estado.service';
 import { Estado } from '../../models/estado';
@@ -14,14 +14,18 @@ export class StateCityComponent {
 
   estados: Estado[] = [];
   cidades: Cidade[] = [];
-  estadoSelecionado!: Estado;
-  cidadeSelecionada!: Cidade;
-  idEstadoInicial!: number; 
-  idCidadeInicial!: number; 
+  idEstadoInicial!: number;
+  idCidadeInicial!: number;
 
 
-  @Output() outputCidade: EventEmitter<string> = new EventEmitter<string>();
-  @Output() outputEstado: EventEmitter<string> = new EventEmitter<string>();
+  @Input() estadoSelecionado!: Estado;
+  @Output() estadoSelecionadoChange: EventEmitter<Estado> = new EventEmitter<Estado>();
+  
+  @Input() cidadeSelecionada!: Cidade;
+  @Output() cidadeSelecionadaChange: EventEmitter<Cidade> = new EventEmitter<Cidade>();
+
+  @Input() siglaEstadoInicial!: string; 
+  @Input() nomeCidadeInicial!: string;
 
   constructor(
     private estadoService: EstadoService,
@@ -29,55 +33,80 @@ export class StateCityComponent {
   ) {}
 
   ngOnInit() {
-    this.estadoService.getEstados().subscribe(data => {
-      this.estados = data;
+    this.loadStates();
+    this.initialValueState();
+  }
+
+  //Carrega os dados dos Estados
+  loadStates() {
+    this.estadoService.getEstados().subscribe(dadosEstados => {
+      this.estados = dadosEstados;
+    });
+  }
+
+  //Carrega os dados das Cidades
+  loadCities(idEstado: number) {
+    this.cidadeService.getCidades(idEstado).subscribe(dataCidade => {
+      this.cidades = dataCidade;
     });
 
-    this.idEstadoInicial = 31; //ID MINAS GERAIS
-    this.onChangeState(this.idEstadoInicial);
-    this.idCidadeInicial = 3170206; //ID UBERLÂNDIA
-    this.selectedCity(this.idCidadeInicial);
+    this.selectState(idEstado);
   }
-  
-  getDisplayText(item: any): string {
+
+  //Valor inicial do Estado pela sigla
+  initialValueState() {
+    this.estadoService.searchBySigla(this.siglaEstadoInicial).subscribe(estado => {
+      this.idEstadoInicial = estado.id;
+
+      this.loadCities(this.idEstadoInicial);
+      this.initialValueCity();
+    });;
+  }
+
+  //Valor inicial da Cidade pelo nome
+  initialValueCity() {
+    this.cidadeService.searchByName(this.nomeCidadeInicial).subscribe(cidade => {
+      this.idCidadeInicial = cidade[0].id;
+    });
+  }
+
+  //Texto formatado com a sigla e o nome do estado (SP - São Paulo)
+  textFormatted(item: any): string {
     if (item) {
       return `${item.sigla} - ${item.nome}`;
     }
     return '';
   }
-
-  onChangeState(idEstado: number) {
-    this.cidadeService.getCidades(idEstado).subscribe(data => {
-      this.cidades = data;
-    });
-
-    this.selectedState(idEstado);
-  }
-
-  selectedState(idEstado: number) {
+  
+  //Seleciona o Estado
+  selectState(idEstado: number) {
     this.estadoService.searchById(idEstado).subscribe(estado => {
       this.estadoSelecionado = estado;
       this.estadoOutput();
+      this.cidadeSelecionada = new Cidade()
+      this.cidadeOutput();
       console.log(this.estadoSelecionado.nome);
     });
-
   }
 
-  selectedCity(idCidade: number) {
+  //Seleciona a Cidade
+  selectCity(idCidade: number) {
     this.cidadeService.searchById(idCidade).subscribe(cidade => {
-      this.cidadeSelecionada = cidade[0];
+      this.cidadeSelecionada = Array.isArray(cidade) ? cidade[0] : cidade;
       this.cidadeOutput();
       console.log(this.cidadeSelecionada.nome);
     });
   }
 
+  //Emite com o output o estado para fora do componente para ser usado por outros componentes
   estadoOutput() {
-    this.outputEstado.emit(this.estadoSelecionado.nome);
+    this.estadoSelecionadoChange.emit(this.estadoSelecionado); 
     console.log("Output: " + this.estadoSelecionado.nome);
   }
 
+  //Emite com o output a cidade para fora do componente para ser usado por outros componentes
   cidadeOutput() {
-    this.outputCidade.emit(this.cidadeSelecionada.nome);
+    this.cidadeSelecionadaChange.emit(this.cidadeSelecionada); 
     console.log("Output: " + this.cidadeSelecionada.nome);
   }
   

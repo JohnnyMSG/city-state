@@ -29,6 +29,13 @@ export class CidadeService {
     );;
   }
 
+  searchByName(nomeCidade: string): Observable<Cidade[]> {
+    return this.http.get<Cidade[]>(`${this.API}/${this.idEstadoTemp}/municipios`)
+    .pipe(
+      map((cidades: Cidade[]) => cidades.filter(c => c.nome == nomeCidade))
+    );;
+  }
+
 }
 
 // {

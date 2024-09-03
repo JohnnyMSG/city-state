@@ -2,11 +2,17 @@
     <h2>Profile</h2>
 
     <state-city
-    (outputEstado)="onEstado($event)"
-    (outputCidade)="onCidade($event)"
+        [(estadoSelecionado)]="estadoSelecionado"
+        [(cidadeSelecionada)]="cidadeSelecionada"
+        [siglaEstadoInicial]="'MG'"
+        [nomeCidadeInicial]="'Uberlândia'"
     ></state-city>
     <br>
 
-    <p>Estado selecionado: {{ estadoSelecionado }}</p>
-    <p>Cidade selecionada: {{ cidadeSelecionada }}</p>
+    <p>
+        Estado selecionado: {{ estadoSelecionado.sigla + ' - ' + estadoSelecionado.nome }}
+    </p>
+    <p>
+        Cidade selecionada: {{ cidadeSelecionada.nome }}
+    </p>
 </div>
