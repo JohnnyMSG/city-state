@@ -12,11 +12,11 @@ export class ProfileComponent {
   constructor() {
     this.employee = {
       ID: 7,
-      FirstName: 'Sandra',
+      FirstName: 'Johnny',
       LastName: 'Gouveia',
       Prefix: 'Mrs.',
       Position: 'Controller',
-      Picture: 'images/employees/06.png',
+      Picture: 'images/employees/19.png',
       BirthDate: new Date('1974/11/5'),
       HireDate: new Date('2005/05/11'),
       /* tslint:disable-next-line:max-line-length */

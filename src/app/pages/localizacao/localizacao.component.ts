@@ -11,7 +11,7 @@ import { Cidade } from '../../shared/models/cidade';
 })
 export class LocalizacaoComponent {
 
-  estadoSelecionado: Estado = {} as Estado; 
+  teste: Estado = {} as Estado;
   cidadeSelecionada: Cidade = {} as Cidade;
 
 }

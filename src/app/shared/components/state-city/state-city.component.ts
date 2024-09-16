@@ -20,11 +20,11 @@ export class StateCityComponent {
 
   @Input() estadoSelecionado!: Estado;
   @Output() estadoSelecionadoChange: EventEmitter<Estado> = new EventEmitter<Estado>();
-  
+
   @Input() cidadeSelecionada!: Cidade;
   @Output() cidadeSelecionadaChange: EventEmitter<Cidade> = new EventEmitter<Cidade>();
 
-  @Input() siglaEstadoInicial!: string; 
+  @Input() siglaEstadoInicial!: string;
   @Input() nomeCidadeInicial!: string;
 
   constructor(
@@ -77,7 +77,7 @@ export class StateCityComponent {
     }
     return '';
   }
-  
+
   //Seleciona o Estado
   selectState(idEstado: number) {
     this.estadoService.searchById(idEstado).subscribe(estado => {
@@ -100,16 +100,16 @@ export class StateCityComponent {
 
   //Emite com o output o estado para fora do componente para ser usado por outros componentes
   estadoOutput() {
-    this.estadoSelecionadoChange.emit(this.estadoSelecionado); 
+    this.estadoSelecionadoChange.emit(this.estadoSelecionado);
     console.log("Output: " + this.estadoSelecionado.nome);
   }
 
   //Emite com o output a cidade para fora do componente para ser usado por outros componentes
   cidadeOutput() {
-    this.cidadeSelecionadaChange.emit(this.cidadeSelecionada); 
+    this.cidadeSelecionadaChange.emit(this.cidadeSelecionada);
     console.log("Output: " + this.cidadeSelecionada.nome);
   }
-  
+
 }
 
 @NgModule({
@@ -120,5 +120,3 @@ export class StateCityComponent {
   exports: [ StateCityComponent ],
 })
 export class StateCityModule { }
-
-//

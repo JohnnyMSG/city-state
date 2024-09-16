@@ -1,0 +1,144 @@
+<div class="content-block">
+  <h2>Notas</h2>
+
+  <!-- LISTAGEM -->
+  <dx-data-grid
+    id="notas"
+    [dataSource]="notas"
+    keyExpr="id"
+    [showRowLines]="true"
+    [showBorders]="false"
+    [columnAutoWidth]="true"
+    (onEditorPreparing)="editorPreparing($event)"
+    (onRowUpdating)="customSaveFunction($event)"
+    (onRowRemoving)="popupConfirmacaoDelete($event)"
+  >
+    <!-- COLUNAS DA LISTA -->
+    <dxi-column dataField="id"></dxi-column>
+    <dxi-column dataField="numero"></dxi-column>
+    <dxi-column dataField="fornecedor.nome" caption="Nome do Fornecedor"></dxi-column>
+    <dxi-column dataField="data" dataType="date" dataformatas="dd/mm/YYYY"></dxi-column>
+
+    <!-- OPÇÕES DAS PÁGINAS DA LISTA -->
+    <dxo-scrolling mode="standard"></dxo-scrolling>
+    <dxo-paging [enabled]="true" [pageSize]="5"></dxo-paging>
+    <dxo-pager
+      [showPageSizeSelector]="true"
+      [allowedPageSizes]="[5, 10, 20]"
+      [showInfo]="false"
+    ></dxo-pager>
+
+    <!-- PESQUISA E FILTRO -->
+    <dxo-search-panel [visible]="true" width="300"></dxo-search-panel>
+    <dxo-header-filter [visible]="false"></dxo-header-filter>
+
+    <!-- CONFIGURAÇÕES DA LISTA (EDIÇÃO E REMOÇÃO) -->
+    <dxo-editing
+      mode="popup"
+      [allowUpdating]="true"
+      [allowDeleting]="true"
+      [confirmDelete]="false"
+      [texts]="{
+        saveRowChanges: 'Salvar',
+        cancelRowChanges: 'Cancelar'
+      }"
+    >
+      <dxo-popup
+        title="Editar"
+        [showTitle]="true"
+        [width]="750"
+        [height]="525"
+      >
+      </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" caption="Informações" [colCount]="2" [colSpan]="2">
+          <dxi-item dataField="id"></dxi-item>
+          <dxi-item dataField="data"></dxi-item>
+          <dxi-item dataField="numero">
+            <dxi-validation-rule type="required" message="Número é obrigatório"></dxi-validation-rule>
+            <dxi-validation-rule type="pattern" [pattern]="apenasDigitosPattern"
+                                 message="Apenas dígitos são permitidos"></dxi-validation-rule>
+          </dxi-item>
+          <dxi-item dataField="fornecedor.nome">
+            <dxi-validation-rule type="required" message="Fornecedor é obrigatório"></dxi-validation-rule>
+          </dxi-item>
+
+          <dxi-item itemType="group" caption="Informações" [colCount]="1" [colSpan]="2">
+            <dx-data-grid
+              id="notasItens"
+              [dataSource]="itensNota"
+              keyExpr="id"
+              [showRowLines]="true"
+              [showBorders]="false"
+              [columnAutoWidth]="true"
+            >
+            </dx-data-grid>
+          </dxi-item>
+
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+  </dx-data-grid>
+
+
+  <!-- BOTÃO PARA ADICIONAR -->
+  <popup
+    [(novoDado)]="novaNota"
+    (_onPressCriar)="criarNota($event)"
+    [(botao)]="botaoDesativado"
+  >
+    <!-- FORMULÁRIO COM SCROLL -->
+    <dx-scroll-view width="100%" height="100%">
+      <dx-form
+        id="form"
+        [(formData)]="novaNota"
+        [readOnly]="false"
+        [showColonAfterLabel]="true"
+        [minColWidth]="300"
+        [colCount]="1"
+        [showValidationSummary]="true"
+      >
+        <!-- ID -->
+        <dxi-item dataField="id" [visible]="false"></dxi-item>
+
+        <!-- NUMERO -->
+        <dxi-item dataField="numero" [editorOptions]="numeroEditorOptions">
+          <dxi-validation-rule type="required" message="Número é obrigatório"></dxi-validation-rule>
+          <dxi-validation-rule type="pattern" [pattern]="apenasDigitosPattern"
+                               message="Apenas dígitos são permitidos"></dxi-validation-rule>
+        </dxi-item>
+
+        <!-- FORNECEDOR -->
+        <dxi-item
+          dataField="fornecedor"
+          editorType="dxSelectBox"
+          [editorOptions]="{
+            dataSource: fornecedores,
+            displayExpr: 'nome',
+            value: 'id'
+          }">
+        </dxi-item>
+
+      </dx-form>
+
+    </dx-scroll-view>
+  </popup>
+
+</div>
+
+<!-- POPUP CONFIRMAÇÃO DELETE -->
+<dx-popup
+  [visible]="popupDeleteVisivel"
+  [width]="500"
+  [height]="170"
+  [showTitle]="false"
+>
+  <p style="font-size: 18px">Você tem certeza que deseja excluir este fornecedor?</p>
+  <br>
+
+  <!-- BOTÕES DELETAR E CANCELAR -->
+  <div style="display: flex; justify-content: flex-end">
+    <dx-button text="Cancelar" (onClick)="cancelarDelete()"></dx-button>
+    <dx-button text="Deletar" type="default" (onClick)="deletarProduto()"></dx-button>
+  </div>
+</dx-popup>

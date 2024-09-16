@@ -1,0 +1,27 @@
+<!-- BOTÃO ADICIONAR -->
+<dx-speed-dial-action
+  icon="add"
+  label="Adicionar"
+  (onClick)="abrirPopup()"
+></dx-speed-dial-action>
+
+<!-- POPUP -->
+<dx-popup
+  [width]="600"
+  [height]="500"
+  [showCloseButton]="true"
+  [hideOnOutsideClick]="true"
+  [(visible)]="popupVisivel"
+  title="Adicionar"
+>
+  <ng-content></ng-content>
+
+  <!-- BOTÃO SALVAR -->
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [disabled]="botao"
+    [options]="configBotao"
+  ></dxi-toolbar-item>
+</dx-popup>

@@ -1,16 +1,16 @@
 <div class="content-block">
-    <h2>Profile</h2>
+    <h2>Localização</h2>
 
     <state-city
-        [(estadoSelecionado)]="estadoSelecionado"
+        [(estadoSelecionado)]="teste"
         [(cidadeSelecionada)]="cidadeSelecionada"
-        [siglaEstadoInicial]="'MG'"
-        [nomeCidadeInicial]="'Uberlândia'"
+        siglaEstadoInicial="MG"
+        nomeCidadeInicial="Uberlândia"
     ></state-city>
     <br>
 
     <p>
-        Estado selecionado: {{ estadoSelecionado.sigla + ' - ' + estadoSelecionado.nome }}
+        Estado selecionado: {{ teste.sigla + ' - ' + teste.nome }}
     </p>
     <p>
         Cidade selecionada: {{ cidadeSelecionada.nome }}

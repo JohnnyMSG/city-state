@@ -38,7 +38,7 @@
 .dx-swatch-additional :root {
   --dx-component-color-bg: #363640;
   --dx-color-main-bg: #363640;
-  --dx-color-primary: #ff5722;
+  --dx-color-primary: #cddc39;
   --dx-color-danger: #f44336;
   --dx-color-success: #8bc34a;
   --dx-color-warning: #ffc107;
@@ -46,7 +46,7 @@
   --dx-color-text: #fff;
   --dx-color-icon: rgba(255, 255, 255, 0.54);
   --dx-color-spin-icon: rgba(255, 255, 255, 0.54);
-  --dx-color-link: #ff5722;
+  --dx-color-link: #cddc39;
   --dx-color-shadow: #000;
   --dx-color-separator: #515159;
   --dx-component-height: 48px;
@@ -183,7 +183,7 @@
 }
 .dx-theme-material-typography .dx-swatch-additional a,
 .dx-theme-material-typography.dx-swatch-additional a {
-  color: #ff5722;
+  color: #cddc39;
 }
 .dx-swatch-additional .dx-icon-accountbox,
 .dx-swatch-additional .dx-icon-add,
@@ -1610,10 +1610,10 @@
   margin: 0;
 }
 .dx-swatch-additional .dx-theme-marker {
-  font-family: "dx.material.orange-dark";
+  font-family: "dx.material.lime-dark";
 }
 .dx-swatch-additional .dx-theme-accent-as-text-color {
-  color: #ff5722!important;
+  color: #cddc39!important;
 }
 .dx-swatch-additional .dx-theme-text-color {
   color: #fff!important;
@@ -1625,8 +1625,8 @@
   color: #515159!important;
 }
 .dx-swatch-additional .dx-theme-accent-as-background-color {
-  background-color: #ff5722!important;
-  fill: #ff5722!important;
+  background-color: #cddc39!important;
+  fill: #cddc39!important;
 }
 .dx-swatch-additional .dx-theme-text-color-as-background-color {
   background-color: #fff!important;
@@ -1644,7 +1644,7 @@
   fill: #515159!important;
 }
 .dx-swatch-additional .dx-theme-accent-as-border-color {
-  border-color: #ff5722!important;
+  border-color: #cddc39!important;
 }
 .dx-swatch-additional .dx-theme-text-color-as-border-color {
   border-color: #fff!important;
@@ -2243,14 +2243,14 @@
 }
 .dx-swatch-additional .dx-button.dx-button-default {
   border-radius: 4px;
-  background-color: #ff5722;
+  background-color: #cddc39;
   color: rgba(0,0,0,.87);
 }
 .dx-swatch-additional .dx-button.dx-button-default .dx-icon {
   color: rgba(0,0,0,.87);
 }
 .dx-swatch-additional .dx-button.dx-button-default.dx-state-selected {
-  background-color: #ffc4b1;
+  background-color: #ecf1b2;
 }
 .dx-swatch-additional .dx-button.dx-button-default.dx-state-selected,
 .dx-swatch-additional .dx-button.dx-button-default.dx-state-selected .dx-icon {
@@ -2258,10 +2258,10 @@
 }
 .dx-swatch-additional .dx-button.dx-button-default.dx-state-focused,
 .dx-swatch-additional .dx-button.dx-button-default.dx-state-hover {
-  background-color: #ff784d;
+  background-color: #d6e35e;
 }
 .dx-swatch-additional .dx-button.dx-button-default.dx-state-active {
-  background-color: #ffc4b1;
+  background-color: #ecf1b2;
 }
 .dx-swatch-additional .dx-button.dx-button-default .dx-inkripple-wave {
   background-color: rgba(0,0,0,.2);
@@ -2394,27 +2394,27 @@
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-default {
   background-color: transparent;
-  color: #ff5722;
+  color: #cddc39;
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-default .dx-icon {
-  color: #ff5722;
+  color: #cddc39;
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-default.dx-state-selected {
-  background-color: rgba(255,87,34,.36);
+  background-color: rgba(205,220,57,.36);
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-default.dx-state-selected,
 .dx-swatch-additional .dx-button-mode-text.dx-button-default.dx-state-selected .dx-icon {
-  color: #ff5722;
+  color: #cddc39;
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-default.dx-state-focused,
 .dx-swatch-additional .dx-button-mode-text.dx-button-default.dx-state-hover {
-  background-color: rgba(255,87,34,.08);
+  background-color: rgba(205,220,57,.08);
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-default.dx-state-active {
-  background-color: rgba(255,87,34,.36);
+  background-color: rgba(205,220,57,.36);
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-default .dx-inkripple-wave {
-  background-color: rgba(255,87,34,.2);
+  background-color: rgba(205,220,57,.2);
 }
 .dx-swatch-additional .dx-button-mode-text.dx-button-danger {
   background-color: transparent;
@@ -2490,29 +2490,29 @@
   background-color: rgba(255,255,255,.2);
 }
 .dx-swatch-additional .dx-button-mode-outlined.dx-button-default {
-  border: 1px solid #ff5722;
+  border: 1px solid #cddc39;
   background-color: transparent;
-  color: #ff5722;
+  color: #cddc39;
 }
 .dx-swatch-additional .dx-button-mode-outlined.dx-button-default .dx-icon {
-  color: #ff5722;
+  color: #cddc39;
 }
 .dx-swatch-additional .dx-button-mode-outlined.dx-button-default.dx-state-selected {
-  background-color: rgba(255,87,34,.36);
+  background-color: rgba(205,220,57,.36);
 }
 .dx-swatch-additional .dx-button-mode-outlined.dx-button-default.dx-state-selected,
 .dx-swatch-additional .dx-button-mode-outlined.dx-button-default.dx-state-selected .dx-icon {
-  color: #ff5722;
+  color: #cddc39;
 }
 .dx-swatch-additional .dx-button-mode-outlined.dx-button-default.dx-state-focused,
 .dx-swatch-additional .dx-button-mode-outlined.dx-button-default.dx-state-hover {
-  background-color: rgba(255,87,34,.08);
+  background-color: rgba(205,220,57,.08);
 }
 .dx-swatch-additional .dx-button-mode-outlined.dx-button-default.dx-state-active {
-  background-color: rgba(255,87,34,.36);
+  background-color: rgba(205,220,57,.36);
 }
 .dx-swatch-additional .dx-button-mode-outlined.dx-button-default .dx-inkripple-wave {
-  background-color: rgba(255,87,34,.2);
+  background-color: rgba(205,220,57,.2);
 }
 .dx-swatch-additional .dx-button-mode-outlined.dx-button-danger {
   border: 1px solid #f44336;
@@ -2622,7 +2622,7 @@
 .dx-swatch-additional .dx-checkbox.dx-checkbox-checked.dx-state-focused .dx-checkbox-icon::after,
 .dx-swatch-additional .dx-checkbox.dx-checkbox-indeterminate.dx-state-active .dx-checkbox-icon::after,
 .dx-swatch-additional .dx-checkbox.dx-checkbox-indeterminate.dx-state-focused .dx-checkbox-icon::after {
-  background-color: rgba(255,87,34,.1);
+  background-color: rgba(205,220,57,.1);
   transform: scale(1);
 }
 .dx-swatch-additional .dx-checkbox.dx-checkbox-checked.dx-state-disabled .dx-checkbox-icon,
@@ -2664,7 +2664,7 @@
 }
 .dx-swatch-additional .dx-checkbox-checked .dx-checkbox-icon {
   color: #363640;
-  background-color: #ff5722;
+  background-color: #cddc39;
   border: none;
   font: 18px/1 DXIcons;
 }
@@ -2682,9 +2682,9 @@
   font-size: .888889em;
 }
 .dx-swatch-additional .dx-checkbox-indeterminate .dx-checkbox-icon {
-  background-color: #ff5722;
+  background-color: #cddc39;
   border: none;
-  color: #ff5722;
+  color: #cddc39;
 }
 .dx-swatch-additional .dx-checkbox-indeterminate .dx-checkbox-icon::before {
   position: relative;
@@ -2927,7 +2927,7 @@
   position: absolute;
 }
 .dx-swatch-additional .dx-texteditor.dx-state-focused .dx-texteditor-label {
-  color: #ff5722;
+  color: #cddc39;
   font-size: 12px;
 }
 .dx-swatch-additional .dx-texteditor.dx-state-focused.dx-invalid .dx-texteditor-label {
@@ -2945,7 +2945,7 @@
 }
 .dx-swatch-additional .dx-texteditor.dx-state-active::before,
 .dx-swatch-additional .dx-texteditor.dx-state-focused::before {
-  border-bottom: 2px solid #ff5722;
+  border-bottom: 2px solid #cddc39;
   transform: scale(1);
   transition: transform .6s cubic-bezier(.4, 0, .02, 1);
 }
@@ -3059,7 +3059,7 @@
   box-shadow: inset 0 0 0 1px #fff;
 }
 .dx-swatch-additional .dx-texteditor.dx-editor-outlined.dx-state-focused {
-  box-shadow: inset 0 0 0 2px #ff5722;
+  box-shadow: inset 0 0 0 2px #cddc39;
 }
 .dx-swatch-additional .dx-texteditor.dx-editor-outlined.dx-state-focused.dx-invalid {
   box-shadow: inset 0 0 0 2px #f44336;
@@ -3336,7 +3336,7 @@
 .dx-swatch-additional .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused .dx-label,
 .dx-swatch-additional .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused .dx-label-after,
 .dx-swatch-additional .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused .dx-label-before {
-  border-color: #ff5722;
+  border-color: #cddc39;
 }
 .dx-swatch-additional .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused .dx-label,
 .dx-swatch-additional .dx-editor-outlined.dx-texteditor-with-label.dx-state-focused .dx-label {
@@ -3896,7 +3896,7 @@
 .dx-swatch-additional .dx-loadindicator-segment-inner {
   position: relative;
   height: 100%;
-  border-color: #ff5722 #ff5722 transparent;
+  border-color: #cddc39 #cddc39 transparent;
   border-width: .12em;
   border-style: solid;
   animation: none;
@@ -4100,7 +4100,7 @@
 }
 .dx-swatch-additional .dx-treeview-item-with-checkbox.dx-state-focused > .dx-treeview-item .dx-checkbox.dx-checkbox-checked .dx-checkbox-icon::after,
 .dx-swatch-additional .dx-treeview-item-with-checkbox.dx-state-focused > .dx-treeview-item .dx-checkbox.dx-checkbox-indeterminate .dx-checkbox-icon::after {
-  background-color: rgba(255,87,34,.1);
+  background-color: rgba(205,220,57,.1);
   transform: scale(1);
 }
 .dx-swatch-additional .dx-treeview-item {

@@ -9,16 +9,24 @@ export const navigation = [
     icon: 'folder',
     items: [
       {
-        text: 'Profile',
-        path: '/profile'
-      },
-      {
-        text: 'Tasks',
-        path: '/tasks'
-      },
-      {
         text: 'Localizacao',
         path: '/localizacao'
+      },
+      {
+        text: 'Fornecedores',
+        path: '/fornecedores'
+      },
+      {
+        text: 'Produtos',
+        path: '/produtos'
+      },
+      {
+        text: 'Notas',
+        path: '/notas'
+      },
+      {
+        text: 'Itens da Nota',
+        path: '/itensNota'
       },
     ]
   }

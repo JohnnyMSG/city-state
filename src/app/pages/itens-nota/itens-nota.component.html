@@ -1,0 +1,60 @@
+<div class="content-block">
+  <h2>Item Nota</h2>
+
+  <!-- LISTAGEM -->
+  <list
+    [(lista)]="itensNota"
+    (_onPressDeletar)="deletarItemNota($event)"
+    (_onPressAtualizar)="atualizarItemNota($event)"
+  ></list>
+
+  <!-- POPUP PARA ADICIONAR ITEM A NOTA -->
+  <popup
+    [(novoDado)]="novoItemNota"
+    (_onPressCriar)="criarItemNota($event)"
+    [(botao)]="botaoDesativado"
+  >
+    <!-- FORMULÁRIO COM SCROLL -->
+    <dx-scroll-view width="100%" height="100%">
+      <dx-form
+        id="form"
+        [(formData)]="novoItemNota"
+        [readOnly]="false"
+        [showColonAfterLabel]="true"
+        [minColWidth]="300"
+        [colCount]="1"
+        [showValidationSummary]="true"
+      >
+        <!-- ID -->
+        <dxi-item dataField="id" [visible]="false"></dxi-item>
+
+        <!-- QUANTIDADE -->
+        <dxi-item dataField="quantidade" [editorOptions]="quantidadeEditorOptions">
+          <dxi-validation-rule type="required" message="Quantidade do produto é obrigatório"></dxi-validation-rule>
+          <dxi-validation-rule type="pattern" [pattern]="apenasDigitosPattern" message="Apenas dígitos são permitidos"></dxi-validation-rule>
+        </dxi-item>
+
+        <!-- NUMERO NOTA -->
+        <dxi-item
+          dataField="notas"
+          editorType="dxSelectBox"
+          [editorOptions]="{
+            dataSource: notas,
+            displayExpr: 'numero',
+          }"></dxi-item>
+
+        <!-- NOME PRODUTO -->
+        <dxi-item
+          dataField="produtos"
+          editorType="dxSelectBox"
+          [editorOptions]="{
+            dataSource: produtos,
+            displayExpr: 'nome',
+            value: 'id'
+          }">
+        </dxi-item>
+
+      </dx-form>
+    </dx-scroll-view>
+  </popup>
+</div>

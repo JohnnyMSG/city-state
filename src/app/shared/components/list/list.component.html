@@ -1,0 +1,59 @@
+<!-- LISTAGEM -->
+<dx-data-grid
+  id="fornecedores"
+  [dataSource]="lista"
+  keyExpr="id"
+  [showRowLines]="true"
+  [showBorders]="false"
+  [columnAutoWidth]="true"
+  (onEditorPreparing)="configuracaoEditor($event)"
+  (onRowUpdating)="salvarEdicao($event)"
+  (onRowRemoving)="popupConfirmacaoDelete($event)"
+>
+
+  <!-- OPÇÕES DAS PÁGINAS DA LISTA -->
+  <dxo-scrolling mode="standard"></dxo-scrolling>
+  <dxo-paging [enabled]="true" [pageSize]="5"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[5, 10, 20]"
+    [showInfo]="false"
+  ></dxo-pager>
+
+  <!-- PESQUISA E FILTRO -->
+  <dxo-search-panel [visible]="true" width="300"></dxo-search-panel>
+  <dxo-header-filter [visible]="false"></dxo-header-filter>
+
+  <!-- CONFIGURAÇÕES DA LISTA (EDIÇÃO E REMOÇÃO) -->
+  <dxo-editing
+    mode="popup"
+    [allowUpdating]="true"
+    [allowDeleting]="true"
+    [confirmDelete]="false"
+    [texts]="{
+      saveRowChanges: 'Salvar',
+      cancelRowChanges: 'Cancelar'
+    }"
+  >
+    <dxo-popup title="Editar" [showTitle]="true" [width]="600" height="65%"></dxo-popup>
+    <dxo-form [colCount]="1"></dxo-form>
+
+  </dxo-editing>
+</dx-data-grid>
+
+<!-- POPUP CONFIRMAÇÃO DELETE -->
+<dx-popup
+  [visible]="popupDeleteVisivel"
+  [width]="500"
+  [height]="170"
+  [showTitle]="false"
+>
+  <p style="font-size: 18px">Você tem certeza que deseja excluir este item?</p>
+  <br>
+
+  <!-- BOTÕES DE CONFIRMAÇÃO E CANCELAMENTO -->
+  <div style="display: flex; justify-content: flex-end">
+    <dx-button text="Cancelar" (onClick)="cancelarDelete()"></dx-button>
+    <dx-button text="Deletar" type="default" (onClick)="onPressDeletar()"></dx-button>
+  </div>
+</dx-popup>

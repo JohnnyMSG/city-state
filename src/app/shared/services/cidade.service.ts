@@ -9,7 +9,7 @@ import { Observable, map } from 'rxjs';
 export class CidadeService {
 
   private readonly API = `https://servicodados.ibge.gov.br/api/v1/localidades/estados`;
-  
+
   constructor(private http: HttpClient) { }
 
   idEstadoTemp!: number;
@@ -33,7 +33,7 @@ export class CidadeService {
     return this.http.get<Cidade[]>(`${this.API}/${this.idEstadoTemp}/municipios`)
     .pipe(
       map((cidades: Cidade[]) => cidades.filter(c => c.nome == nomeCidade))
-    );;
+    );
   }
 
 }

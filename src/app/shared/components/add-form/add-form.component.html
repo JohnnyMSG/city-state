@@ -1,0 +1,15 @@
+<dx-scroll-view width="100%" height="100%">
+  <dx-form
+    id="form"
+    [(formData)]="tipo"
+    [readOnly]="false"
+    [showColonAfterLabel]="true"
+    [minColWidth]="300"
+    [colCount]="1"
+    [width]="600"
+  >
+    <dxi-item dataField="id" [visible]="false"></dxi-item>
+    <dxi-item dataField="codigoFornecedor" [isRequired]="true"></dxi-item>
+    <dxi-item dataField="nome" [isRequired]="true"></dxi-item>
+  </dx-form>
+</dx-scroll-view>

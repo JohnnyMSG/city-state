@@ -1,0 +1,66 @@
+<div class="content-block">
+  <h2>Fornecedores</h2>
+
+  <!-- LISTAGEM -->
+  <list
+    [(lista)]="fornecedores"
+    (_onPressDeletar)="deletarFornecedor($event)"
+    (_onPressAtualizar)="atualizarFornecedor($event)"
+  ></list>
+
+  <!-- POPUP PARA ADICIONAR FORNECEDOR -->
+  <popup
+    [(novoDado)]="novoFornecedor"
+    (_onPressCriar)="criarFornecedor($event)"
+    [(botao)]="botaoDesativado"
+  >
+    <!-- FORMULÁRIO COM SCROLL -->
+    <dx-scroll-view width="100%" height="100%">
+      <dx-form
+        id="form"
+        [(formData)]="novoFornecedor"
+        [readOnly]="false"
+        [showColonAfterLabel]="true"
+        [minColWidth]="300"
+        [colCount]="1"
+        [showValidationSummary]="true"
+      >
+        <!-- ID -->
+        <dxi-item dataField="id" [visible]="false"></dxi-item>
+
+        <!-- CODIGO FORNECEDOR -->
+        <dxi-item dataField="codigoFornecedor" [editorOptions]="codigoFornecedorEditorOptions">
+          <dxi-validation-rule type="required" message="Código do Fornecedor é obrigatório"></dxi-validation-rule>
+          <dxi-validation-rule type="pattern" [pattern]="apenasDigitosPattern" message="Apenas dígitos são permitidos"></dxi-validation-rule>
+        </dxi-item>
+
+        <!-- NOME -->
+        <dxi-item dataField="nome" [editorOptions]="nomeEditorOptions">
+          <dxi-validation-rule type="required" message="Nome é obrigatório"></dxi-validation-rule>
+          <dxi-validation-rule type="pattern" [pattern]="apenasStringPattern" message="Não use dígitos no Nome"></dxi-validation-rule>
+          <dxi-validation-rule type="stringLength" [min]="5" message="O nome deve ter pelo menos 5 símbolos"></dxi-validation-rule>
+        </dxi-item>
+
+      </dx-form>
+    </dx-scroll-view>
+  </popup>
+</div>
+
+
+
+<!-- POPUP AVISO FORNECEDOR VINCULADO A NOTA -->
+<dx-popup
+  [visible]="notaComFornecedorExistente"
+  [width]="500"
+  [height]="250"
+  [showTitle]="true"
+  title="AVISO"
+>
+  <p style="font-size: 18px">A exclusão deste fornecedor não é permitida, pois há uma nota vinculada a ele.</p>
+  <br>
+
+  <!-- BOTÃO OK -->
+  <div style="display: flex; justify-content: flex-end">
+    <dx-button text="Entendido" type="default" (onClick)="fecharAviso()"></dx-button>
+  </div>
+</dx-popup>

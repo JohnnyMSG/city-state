@@ -7,6 +7,10 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { LocalizacaoComponent } from './pages/localizacao/localizacao.component';
+import {FornecedoresComponent} from "./pages/fornecedores/fornecedores.component";
+import {ProdutosComponent} from "./pages/produtos/produtos.component";
+import {NotasComponent} from "./pages/notas/notas.component";
+import {ItensNotaComponent} from "./pages/itens-nota/itens-nota.component";
 
 const routes: Routes = [
   {
@@ -22,6 +26,26 @@ const routes: Routes = [
   {
     path: 'localizacao',
     component: LocalizacaoComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'fornecedores',
+    component: FornecedoresComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'produtos',
+    component: ProdutosComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'notas',
+    component: NotasComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'itensNota',
+    component: ItensNotaComponent,
     canActivate: [ AuthGuardService ]
   },
   {

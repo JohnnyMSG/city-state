@@ -1,0 +1,53 @@
+<div class="content-block">
+  <h2>Produtos</h2>
+
+  <!-- LISTAGEM -->
+  <list
+    [(lista)]="produtos"
+    (_onPressDeletar)="deletarProduto($event)"
+    (_onPressAtualizar)="atualizarProduto($event)"
+  ></list>
+
+  <!-- POPUP PARA ADICIONAR PRODUTO -->
+  <popup
+    [(novoDado)]="novoProduto"
+    (_onPressCriar)="criarProduto($event)"
+    [(botao)]="botaoDesativado"
+  >
+    <!-- FORMULÁRIO COM SCROLL -->
+    <dx-scroll-view width="100%" height="100%">
+      <dx-form
+        id="form"
+        [(formData)]="novoProduto"
+        [readOnly]="false"
+        [showColonAfterLabel]="true"
+        [minColWidth]="300"
+        [colCount]="1"
+        [showValidationSummary]="true"
+      >
+        <!-- ID -->
+        <dxi-item dataField="id" [visible]="false"></dxi-item>
+
+        <!-- NOME -->
+        <dxi-item dataField="nome" [editorOptions]="nomeEditorOptions">
+          <dxi-validation-rule type="required" message="Nome é obrigatório"></dxi-validation-rule>
+          <dxi-validation-rule type="pattern" [pattern]="apenasStringPattern" message="Não use dígitos no Nome"></dxi-validation-rule>
+          <dxi-validation-rule type="stringLength" [min]="5" message="O nome deve ter pelo menos 5 símbolos"></dxi-validation-rule>
+        </dxi-item>
+
+        <!-- DESCRIÇÃO -->
+        <dxi-item dataField="descricao" [editorOptions]="descricaoEditorOptions">
+          <dxi-validation-rule type="required" message="Descrição é obrigatório"></dxi-validation-rule>
+        </dxi-item>
+
+        <!-- PRECO -->
+        <dxi-item dataField="preco" [editorOptions]="precoEditorOptions">
+          <dxi-validation-rule type="required" message="Preco é obrigatório"></dxi-validation-rule>
+          <dxi-validation-rule type="pattern" [pattern]="apenasDigitosPattern" message="Apenas dígitos são permitidos"></dxi-validation-rule>
+        </dxi-item>
+
+      </dx-form>
+    </dx-scroll-view>
+  </popup>
+
+</div>
